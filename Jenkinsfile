@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('fetch') {
             steps {
-                git url: 'https://github.com/mmahu/gateway.git', branch: 'master'
+                git url: 'https://github.com/mmahu/config.git', branch: 'master'
             }
         }
         stage('build') {
@@ -14,12 +14,12 @@ pipeline {
         }
         stage('imaging') {
             steps {
-                sh 'docker build -t mmahu-gateway:lates .'
+                sh 'docker build -t mmahu-config:lates .'
             }
         }
         stage('deploy') {
             steps {
-                sh 'docker run --name="mmahu-gateway" -p 8001:8080 mmahu-gateway:lates'
+                sh 'docker run --name="mmahu-config" -p 8001:8080 mmahu-config:lates'
             }
         }
     }
