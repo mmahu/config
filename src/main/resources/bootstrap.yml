@@ -8,7 +8,3 @@ spring:
       server:
         native:
           search-locations: classpath:/config
-
-logging:
-  level:
-    root: DEBUG
