@@ -4,8 +4,8 @@ plugins {
 	id 'java'
 }
 
-group = 'com.mmahu'
-version = '0.0.1'
+group = "${projectGroup}"
+version = "${currentVersion}${buildNumber}"
 sourceCompatibility = '1.8'
 
 repositories {

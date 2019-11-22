@@ -14,12 +14,13 @@ pipeline {
         }
         stage('imaging') {
             steps {
-                sh 'docker build -t mmahu-config:latest .'
+                sh 'docker build . -t mmahu-main:5000/mmahu-config:latest'
+                sh 'docker push mmahu-main:5000/mmahu-config'
             }
         }
         stage('deploy') {
             steps {
-                sh 'docker run --name="mmahu-config" -p 8001:8080 mmahu-config:latest'
+                sh 'docker service create --no-resolve-image --name="mmahu-config" -p 8888:8888 mmahu-main:5000/mmahu-config:latest'
             }
         }
     }
