@@ -1,2 +1,10 @@
 server:
   port: 8001
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://mmahu-main:8761/eureka/
