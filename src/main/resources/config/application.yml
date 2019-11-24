@@ -1,3 +1,9 @@
+mm:
+  ports:
+    config: 8001
+    gateway: 8002
+    eureka: 8761
+
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 1
