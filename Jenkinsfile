@@ -21,12 +21,12 @@ pipeline {
         stage('deploy') {
             steps {
                 sh 'docker service rm mmahu-config || true'
-                sh 'docker service create
-                    --limit-memory 512M
-                    --hostname mmahu-config
-                    --no-resolve-image
-                    --name mmahu-config
-                    --publish published=8001,target=8080
+                sh 'docker service create \
+                    --limit-memory 512M \
+                    --hostname mmahu-config \
+                    --no-resolve-image \
+                    --name mmahu-config \
+                    --publish published=8001,target=8080 \
                     mmahu-main:5000/mmahu-config:1.0.$BUILD_NUMBER'
             }
         }
