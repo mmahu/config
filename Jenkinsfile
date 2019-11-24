@@ -21,7 +21,7 @@ pipeline {
         stage('deploy') {
             steps {
                 sh 'docker service rm mmahu-config || true'
-                sh 'docker service create --limit-memory 512M --network dev --hostname mmahu-config --no-resolve-image --replicas 1 --name mmahu-config -p 8001:8001 mmahu-main:5000/mmahu-config:1.0.$BUILD_NUMBER'
+                sh 'docker service create --limit-memory 512M --network dev --hostname mmahu-config --no-resolve-image --replicas 1 --name mmahu-config --publish target=8001,published=8001 mmahu-main:5000/mmahu-config:1.0.$BUILD_NUMBER'
             }
         }
     }
