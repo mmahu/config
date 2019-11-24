@@ -1,5 +1,5 @@
 server:
-  port: ${mm.ports.config}
+  port: ${mm.ports.gateway}
 
 eureka:
   instance:
