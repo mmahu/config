@@ -1,8 +1,8 @@
 mm:
   ports:
-    config: 8001
-    gateway: 8002
+    gateway: 7070
     eureka: 8761
+    config: 8001
 
 eureka:
   instance:
