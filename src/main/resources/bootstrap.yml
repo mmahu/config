@@ -1,13 +1,8 @@
 server:
-  port: ${mm.ports.default}
+  port: 8001
 
 spring:
   profiles:
     active: native
   application:
     name: config-server
-  cloud:
-    config:
-      server:
-        native:
-          search-locations: classpath:/config

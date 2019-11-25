@@ -1,12 +1,7 @@
-mm:
-  ports:
-    eureka: 8761
-    default: 8080
-
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
   client:
     serviceUrl:
-      defaultZone: http://mmahu-main:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/

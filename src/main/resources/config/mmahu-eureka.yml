@@ -1,2 +1,2 @@
 server:
-  port: ${mm.ports.eureka}
+  port: 8761

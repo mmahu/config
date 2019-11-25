@@ -1,5 +1,5 @@
 server:
-  port: ${mm.ports.default}
+  port: 8080
 
 eureka:
   instance:
@@ -7,4 +7,4 @@ eureka:
     leaseExpirationDurationInSeconds: 2
   client:
     serviceUrl:
-      defaultZone: http://mmahu-main:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
