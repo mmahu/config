@@ -1,7 +1,7 @@
-def name
-def port
-def registry
-def buildNumber
+def name=""
+def port=""
+def registry=""
+def buildNumber=""
 
 pipeline {
     agent any
@@ -9,11 +9,10 @@ pipeline {
         stage('init') {
             steps {
                 script {
-                    def nr = '$BUILD_NUMBER'
                     name = "e-config"
                     port = "9001:9001"
                     registry = "master:5000"
-                    buildNumber = "1.0.${nr}"
+                    buildNumber = "1.0.$BUILD_NUMBER"
                 }
             }
         }
