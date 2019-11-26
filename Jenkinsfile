@@ -9,10 +9,10 @@ pipeline {
         stage('init') {
             steps {
                 script {
-                    name = "e-config"
-                    port = "9001:9001"
-                    registry = "master:5000"
-                    buildNumber = "1.0.$BUILD_NUMBER"
+                    name="e-config"
+                    port="9001:9001"
+                    registry="master:5000"
+                    buildNumber="1.0.$BUILD_NUMBER"
                 }
             }
         }
@@ -24,6 +24,7 @@ pipeline {
         stage('build') {
             steps {
                 sh 'chmod +x gradlew'
+                sh 'echo ${buildNumber}'
                 sh './gradlew clean assemble -PbuildNumber=${buildNumber}'
             }
         }
