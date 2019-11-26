@@ -8,10 +8,12 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                name = 'e-config'
-                port = '9001:9001'
-                registry = 'master:5000'
-                buildNumber = '1.0.$BUILD_NUMBER'
+                script {
+                    name = "e-config"
+                    port = "9001:9001"
+                    registry = "master:5000"
+                    buildNumber = "1.0.$BUILD_NUMBER"
+                }
             }
         }
         stage('fetch') {
