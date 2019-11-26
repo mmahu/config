@@ -1,11 +1,19 @@
-def name = 'e-config'
-def port = '8001:8001'
-def registry = 'master:5000'
-def buildNumber = '1.0.$BUILD_NUMBER'
+def name
+def port
+def registry
+def buildNumber
 
 pipeline {
     agent any
     stages {
+        stage('init') {
+            steps {
+                name = 'e-config'
+                port = '9001:9001'
+                registry = 'master:5000'
+                buildNumber = '1.0.$BUILD_NUMBER'
+            }
+        }
         stage('fetch') {
             steps {
                 git url: 'https://github.com/mmahu/config.git', branch: 'master'
