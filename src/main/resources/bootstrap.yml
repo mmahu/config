@@ -1,8 +1,14 @@
 server:
-  port: 8001
+  port: 9001
 
 spring:
   profiles:
     active: native
   application:
-    name: config-server
+    name: e-config
+
+cloud:
+  config:
+    server:
+      native:
+        search-locations: classpath:/config

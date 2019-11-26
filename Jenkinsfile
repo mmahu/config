@@ -1,3 +1,8 @@
+def name = 'e-config'
+def port = '8001:8001'
+def registry = 'master:5000'
+def buildNumber = '1.0.$BUILD_NUMBER'
+
 pipeline {
     agent any
     stages {
@@ -9,25 +14,24 @@ pipeline {
         stage('build') {
             steps {
                 sh 'chmod +x gradlew'
-                sh './gradlew clean assemble -PbuildNumber=1.0.$BUILD_NUMBER'
+                sh './gradlew clean assemble -PbuildNumber=${buildNumber}'
             }
         }
         stage('imaging') {
             steps {
-                sh 'docker build . -t mmahu-main:5000/mmahu-config:1.0.$BUILD_NUMBER'
-                sh 'docker push mmahu-main:5000/mmahu-config'
+                sh 'docker build . -t ${registry}/${name}:${buildNumber}'
+                sh 'docker push ${registry}/${name}'
             }
         }
         stage('deploy') {
             steps {
-                sh 'docker service rm mmahu-config || true'
+                sh 'docker service rm ${name} || true'
                 sh 'docker service create \
                     --limit-memory 512M \
-                    --hostname mmahu-config \
                     --no-resolve-image \
-                    --name mmahu-config \
-                    --publish published=8001,target=8080 \
-                    mmahu-main:5000/mmahu-config:1.0.$BUILD_NUMBER'
+                    --name ${name} \
+                    --publish ${port} \
+                    ${registry}/${name}:${buildNumber}'
             }
         }
     }
