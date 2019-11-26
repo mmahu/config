@@ -9,10 +9,11 @@ pipeline {
         stage('init') {
             steps {
                 script {
+                    def nr = '$BUILD_NUMBER'
                     name = "e-config"
                     port = "9001:9001"
                     registry = "master:5000"
-                    buildNumber = "1.0.$BUILD_NUMBER"
+                    buildNumber = "1.0.${nr}"
                 }
             }
         }
