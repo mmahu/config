@@ -9,10 +9,10 @@ pipeline {
         stage('init') {
             steps {
                 script {
-                    name="e-config"
-                    port="9001:9001"
-                    registry="master:5000"
-                    buildNumber="1.0.$BUILD_NUMBER"
+                    name = "e-config"
+                    port = "9001:9001"
+                    registry = "master:5000"
+                    buildNumber = "1.0.$BUILD_NUMBER"
                 }
             }
         }
@@ -24,25 +24,24 @@ pipeline {
         stage('build') {
             steps {
                 sh 'chmod +x gradlew'
-                sh 'echo ${buildNumber}'
-                sh './gradlew clean assemble -PbuildNumber=${buildNumber}'
+                sh "echo ${buildNumber}"
+                sh "./gradlew clean assemble -PbuildNumber=${buildNumber}"
             }
         }
         stage('imaging') {
             steps {
-                sh 'docker build . -t ${registry}/${name}:${buildNumber}'
-                sh 'docker push ${registry}/${name}'
+                sh "docker build . -t ${registry}/${name}:${buildNumber}"
+                sh "docker push ${registry}/${name}"
             }
         }
         stage('deploy') {
             steps {
-                sh 'docker service rm ${name} || true'
-                sh 'docker service create \
-                    --limit-memory 512M \
-                    --no-resolve-image \
+                sh "docker service rm ${name} || true"
+                sh "docker service create \
                     --name ${name} \
+                    --no-resolve-image \
                     --publish ${port} \
-                    ${registry}/${name}:${buildNumber}'
+                    ${registry}/${name}:${buildNumber}"
             }
         }
     }
