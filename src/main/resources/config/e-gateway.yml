@@ -1,2 +1,13 @@
 server:
   port: 9090
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: account
+          uri: lb://e-account
+          predicates:
+            - Path=/api/account/**
+          filters:
+            - StripPrefix=2
