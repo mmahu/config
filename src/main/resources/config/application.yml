@@ -9,6 +9,13 @@ hystrix:
 eureka:
   instance: master
   client:
+    region: global
+    eurekaServerPort: 8761
+    useDnsForFetchingServiceUrls: true
+    eurekaServerDNSName: master
+    eurekaServerURLContext: eureka
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://master:8761/eureka/
 spring:
