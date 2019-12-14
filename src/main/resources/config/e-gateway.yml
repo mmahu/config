@@ -10,4 +10,5 @@ spring:
           predicates:
             - Path=/api/account/**
           filters:
+            - SaveSession
             - StripPrefix=2
