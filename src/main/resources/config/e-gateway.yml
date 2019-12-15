@@ -4,11 +4,11 @@ server:
 spring:
   cloud:
     gateway:
+      default-filters:
+        - SaveSession
+        - StripPrefix=2
       routes:
         - id: account
           uri: lb://e-account
           predicates:
             - Path=/api/account/**
-          filters:
-            - SaveSession
-            - StripPrefix=2
