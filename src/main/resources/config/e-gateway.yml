@@ -7,6 +7,8 @@ spring:
       default-filters:
         - SaveSession
         - StripPrefix=2
+        - RemoveRequestHeader=Set-Cookie
+        - RemoveResponseHeader=Set-Cookie
       routes:
         - id: account
           uri: lb://e-account
