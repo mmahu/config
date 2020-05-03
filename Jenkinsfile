@@ -30,7 +30,7 @@ pipeline {
         }
         stage('imaging') {
             steps {
-                sh "docker buildx build --platform=linux/arm/v8 . -t ${registry}/${name}:${buildNumber} --load"
+                sh "docker buildx build --platform=linux/arm64/v8 . -t ${registry}/${name}:${buildNumber} --load"
                 sh "docker push ${registry}/${name}"
             }
         }
