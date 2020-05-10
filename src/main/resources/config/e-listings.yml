@@ -3,4 +3,4 @@ server:
 spring:
   data:
     solr:
-      host: http://${e-host}:8983/solr/
+      host: http://192.168.0.25:8983/solr/
