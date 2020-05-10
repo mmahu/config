@@ -1,3 +1,4 @@
+e-host: 192.168.0.25
 hystrix:
   command:
     default:
@@ -9,10 +10,10 @@ hystrix:
 eureka:
   instance:
     prefer-ip-address: true
-    ip-address: 192.168.0.19
+    ip-address: ${e-host}
   client:
     serviceUrl:
-      defaultZone: http://192.168.0.19:8761/eureka/
+      defaultZone: http://${e-host}:8761/eureka/
 spring:
   security:
     oauth2:

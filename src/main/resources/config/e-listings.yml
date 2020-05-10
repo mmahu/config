@@ -1,0 +1,6 @@
+server:
+  port: 9009
+spring:
+  data:
+    solr:
+      host: http://${e-host}:8983/solr/
